@@ -242,11 +242,11 @@ run test_frexp_ldexp_eval_method_1.cpp
   : : : <pch>off ;
 run test_frexp_ldexp_eval_method_2.cpp
   : : : <pch>off ;
+run test_from_binary.cpp /boost/charconv//boost_charconv
+  : : : <pch>off ;
 run test_from_chars.cpp /boost/charconv//boost_charconv
   : : : <pch>off ;
 run test_from_chars_nan_payloads.cpp ;
-run test_from_double.cpp /boost/charconv//boost_charconv
-  : : : <pch>off ;
 run test_from_string.cpp ;
 run test_git_issue_266.cpp ;
 run test_git_issue_271.cpp ;

@@ -2,8 +2,8 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
-#ifndef BOOST_DECIMAL_DETAIL_CONVERT_FORMAT_HPP
-#define BOOST_DECIMAL_DETAIL_CONVERT_FORMAT_HPP
+#ifndef BOOST_DECIMAL_DETAIL_BINARY_TO_DECIMAL_HPP
+#define BOOST_DECIMAL_DETAIL_BINARY_TO_DECIMAL_HPP
 
 #include <boost/decimal/detail/config.hpp>
 #include <boost/decimal/detail/add_impl.hpp>
@@ -26,7 +26,7 @@
 namespace boost {
 namespace decimal {
 namespace detail {
-namespace convert_format {
+namespace binary_to_decimal {
 
 // The value is significand * 10^exponent, plus a nonzero fraction of the last digit when inexact
 template <typename UInt>
@@ -290,7 +290,7 @@ constexpr auto to_decimal_type(UInt significand, int exponent, const bool inexac
 }
 
 template <typename DecimalType>
-BOOST_DECIMAL_CXX20_CONSTEXPR auto from_double(const double val) noexcept -> DecimalType
+BOOST_DECIMAL_CXX20_CONSTEXPR auto from_binary64(const double val) noexcept -> DecimalType
 {
     const auto bits {bit_cast<std::uint64_t>(val)};
     const auto sign {(bits >> 63U) != 0U};
@@ -349,9 +349,9 @@ BOOST_DECIMAL_CXX20_CONSTEXPR auto from_double(const double val) noexcept -> Dec
     return to_decimal_type<DecimalType>(exact.significand, exact.exponent, exact.inexact, sign);
 }
 
-} // namespace convert_format
+} // namespace binary_to_decimal
 } // namespace detail
 } // namespace decimal
 } // namespace boost
 
-#endif // BOOST_DECIMAL_DETAIL_CONVERT_FORMAT_HPP
+#endif // BOOST_DECIMAL_DETAIL_BINARY_TO_DECIMAL_HPP
